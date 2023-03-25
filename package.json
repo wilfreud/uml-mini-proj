@@ -6,9 +6,6 @@
   "author": "Commodore",
   "license": "MIT",
   "private": true,
-  "engines" : {
-    "node" : "14.x"
-  },
   "scripts": {
     "dev": "cross-env IS_DEV=true nodemon --watch index.js",
     "prod": "node index.js"

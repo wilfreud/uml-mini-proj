@@ -16,7 +16,7 @@ exports.createJustification = async (req, res) => {
 // Fonction pour récupérer toutes les justifications
 exports.getAllJustifications = async (req, res) => {
   try {
-    const justifications = await Justification.find();
+    const justifications = await Justification.find().populate('student', 'firstName lastName dateOfBirth');
     return res.status(200).json({ justifications });
   } catch (error) {
     console.error(error);
@@ -28,7 +28,7 @@ exports.getAllJustifications = async (req, res) => {
 exports.getJustificationById = async (req, res) => {
   try {
     const { id } = req.params;
-    const justification = await Justification.findById(id);
+    const justification = await Justification.findById(id).populate('student', 'firstName lastName dateOfBirth');
     if (!justification) {
       return res.status(404).json({ message: 'Justification non trouvée' });
     }

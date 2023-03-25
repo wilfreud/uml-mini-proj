@@ -5,7 +5,7 @@ const absenceController = {};
 // Récupérer toutes les absences
 absenceController.getAllAbsences = async (req, res) => {
   try {
-    const absences = await Absence.find();
+    const absences = await Absence.find().populate('student', 'firstName lastName dateOfBirth');
     res.json(absences);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -15,7 +15,7 @@ absenceController.getAllAbsences = async (req, res) => {
 // Récupérer une absence par son ID
 absenceController.getAbsenceById = async (req, res) => {
   try {
-    const absence = await Absence.findById(req.params.id);
+    const absence = await Absence.findById(req.params.id).populate('student', 'firstName lastName dateOfBirth');
     if (absence == null) {
       return res.status(404).json({ message: 'Absence introuvable' });
     }
@@ -28,8 +28,8 @@ absenceController.getAbsenceById = async (req, res) => {
 // Créer une absence
 absenceController.createAbsence = async (req, res) => {
   const absence = new Absence({
-    studentId: req.body.studentId,
-    courseId: req.body.courseId,
+    student: req.body.studentId,
+    course: req.body.courseId,
     date: req.body.date,
     status: req.body.status
   });
