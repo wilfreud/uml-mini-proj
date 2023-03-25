@@ -27,6 +27,7 @@ absenceController.getAbsenceById = async (req, res) => {
 
 // Créer une absence
 absenceController.createAbsence = async (req, res) => {
+  console.log(req.body)
   const absence = new Absence({
     student: req.body.studentId,
     course: req.body.courseId,
