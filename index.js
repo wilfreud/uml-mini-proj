@@ -10,7 +10,7 @@ const absenceRoutes = require('./routes/absence.route');
 const justificationRoutes = require('./routes/justification.route');
 
 
-const MONGO_PROD_SERVER = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@uml-db.t2cmz4v.mongodb.net/?retryWrites=true&w=majority`
+const MONGO_PROD_SERVER = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@uml-db.t2cmz4v.mongodb.net/uml-db?retryWrites=true&w=majority`
 
 const MONGO_DEV_SERVER = `mongodb://127.0.0.1:27017/${process.env.MONGO_DBNAME}`
 
